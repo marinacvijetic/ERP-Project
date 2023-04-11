@@ -1,0 +1,12 @@
+package lillyBakery.repository;
+
+import java.util.Collection;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import lillyBakery.jpa.TblAdministrator;
+
+public interface TblAdministratorRepository extends JpaRepository<TblAdministrator, Integer>{
+	Collection<TblAdministrator> findByUsernameContainingIgnoreCase(String username);
+
+}

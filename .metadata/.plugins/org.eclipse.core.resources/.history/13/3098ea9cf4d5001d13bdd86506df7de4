@@ -1,0 +1,72 @@
+package lillyBakery.jpa;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
+
+
+/**
+ * The persistent class for the tblpayment_method database table.
+ * 
+ */
+@Entity
+@Table(name="tblpayment_method")
+@NamedQuery(name="TblPaymentMethod.findAll", query="SELECT t FROM TblPaymentMethod t")
+public class TblPaymentMethod implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@SequenceGenerator(name="TBLPAYMENT_METHOD_PAYMENTMETHODID_GENERATOR", sequenceName="PAYMENT_METHOD_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TBLPAYMENT_METHOD_PAYMENTMETHODID_GENERATOR")
+	@Column(name="payment_method_id")
+	private Integer paymentMethodId;
+
+	@Column(name="payment_method")
+	private String paymentMethod;
+
+	//bi-directional many-to-one association to TblOrder
+	@OneToMany(mappedBy="tblpaymentMethod")
+	private List<TblOrder> tblorders;
+
+	public TblPaymentMethod() {
+	}
+
+	public Integer getPaymentMethodId() {
+		return this.paymentMethodId;
+	}
+
+	public void setPaymentMethodId(Integer paymentMethodId) {
+		this.paymentMethodId = paymentMethodId;
+	}
+
+	public String getPaymentMethod() {
+		return this.paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+	public List<TblOrder> getTblorders() {
+		return this.tblorders;
+	}
+
+	public void setTblorders(List<TblOrder> tblorders) {
+		this.tblorders = tblorders;
+	}
+
+	public TblOrder addTblorder(TblOrder tblorder) {
+		getTblorders().add(tblorder);
+		tblorder.setTblpaymentMethod(this);
+
+		return tblorder;
+	}
+
+	public TblOrder removeTblorder(TblOrder tblorder) {
+		getTblorders().remove(tblorder);
+		tblorder.setTblpaymentMethod(null);
+
+		return tblorder;
+	}
+
+}

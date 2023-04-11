@@ -1,0 +1,68 @@
+package lillyBakery.jpa;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+/**
+ * The primary key class for the tbluser_query_response database table.
+ * 
+ */
+@Embeddable
+public class TblUserQueryResponsePK implements Serializable {
+	//default serial version id, required for serializable classes.
+	private static final long serialVersionUID = 1L;
+
+	@Column(name="query_id", insertable=false, updatable=false)
+	private Integer queryId;
+
+	@Column(name="customer_id", insertable=false, updatable=false)
+	private Integer customerId;
+
+	@Column(name="response_id", insertable=false, updatable=false)
+	private Integer responseId;
+
+	public TblUserQueryResponsePK() {
+	}
+	public Integer getQueryId() {
+		return this.queryId;
+	}
+	public void setQueryId(Integer queryId) {
+		this.queryId = queryId;
+	}
+	public Integer getCustomerId() {
+		return this.customerId;
+	}
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+	public Integer getResponseId() {
+		return this.responseId;
+	}
+	public void setResponseId(Integer responseId) {
+		this.responseId = responseId;
+	}
+
+	public boolean equals(Object other) {
+		if (this == other) {
+			return true;
+		}
+		if (!(other instanceof TblUserQueryResponsePK)) {
+			return false;
+		}
+		TblUserQueryResponsePK castOther = (TblUserQueryResponsePK)other;
+		return 
+			this.queryId.equals(castOther.queryId)
+			&& this.customerId.equals(castOther.customerId)
+			&& this.responseId.equals(castOther.responseId);
+	}
+
+	public int hashCode() {
+		final int prime = 31;
+		int hash = 17;
+		hash = hash * prime + this.queryId.hashCode();
+		hash = hash * prime + this.customerId.hashCode();
+		hash = hash * prime + this.responseId.hashCode();
+		
+		return hash;
+	}
+}

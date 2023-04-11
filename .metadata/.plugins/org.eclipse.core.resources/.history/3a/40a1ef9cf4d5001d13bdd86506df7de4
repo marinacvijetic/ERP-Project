@@ -1,0 +1,57 @@
+package lillyBakery.jpa;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+
+/**
+ * The persistent class for the tbladministrator database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="TblAdministrator.findAll", query="SELECT t FROM TblAdministrator t")
+public class Tbldministrator implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@SequenceGenerator(name="TBLADMINISTRATOR_ADMINID_GENERATOR", sequenceName="ADMINISTRATOR_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TBLADMINISTRATOR_ADMINID_GENERATOR")
+	@Column(name="admin_id")
+	private Integer adminId;
+
+	@Column(name="admin_name")
+	private String adminName;
+
+	//bi-directional many-to-one association to TblUser
+	@ManyToOne
+	@JoinColumn(name="user_email")
+	private TblUser tbluser;
+
+	public Tbldministrator() {
+	}
+
+	public Integer getAdminId() {
+		return this.adminId;
+	}
+
+	public void setAdminId(Integer adminId) {
+		this.adminId = adminId;
+	}
+
+	public String getAdminName() {
+		return this.adminName;
+	}
+
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
+
+	public TblUser getTbluser() {
+		return this.tbluser;
+	}
+
+	public void setTbluser(TblUser tbluser) {
+		this.tbluser = tbluser;
+	}
+
+}

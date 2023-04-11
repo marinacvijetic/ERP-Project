@@ -1,0 +1,123 @@
+package lillyBakery.jpa;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+
+
+/**
+ * The persistent class for the tblquery database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="TblQuery.findAll", query="SELECT t FROM TblQuery t")
+public class TblQuery implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@SequenceGenerator(name="TBLQUERY_QUERYID_GENERATOR", sequenceName="QUERY_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TBLQUERY_QUERYID_GENERATOR")
+	@Column(name="query_id")
+	private Integer queryId;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="_date")
+	private Date date;
+
+	@Column(name="_query")
+	private String query;
+
+	//bi-directional many-to-one association to TblCustomer
+	@ManyToOne
+	@JoinColumn(name="customer_id")
+	private TblCustomer tblcustomer;
+
+	//bi-directional many-to-one association to TblResponse
+	@OneToMany(mappedBy="tblquery")
+	private List<TblResponse> tblresponses;
+
+	//bi-directional many-to-one association to TblUserQueryResponse
+	@OneToMany(mappedBy="tblquery")
+	private List<TblUserQueryResponse> tbluserQueryResponses;
+
+	public TblQuery() {
+	}
+
+	public Integer getQueryId() {
+		return this.queryId;
+	}
+
+	public void setQueryId(Integer queryId) {
+		this.queryId = queryId;
+	}
+
+	public Date getDate() {
+		return this.date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getQuery() {
+		return this.query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
+	}
+
+	public TblCustomer getTblcustomer() {
+		return this.tblcustomer;
+	}
+
+	public void setTblcustomer(TblCustomer tblcustomer) {
+		this.tblcustomer = tblcustomer;
+	}
+
+	public List<TblResponse> getTblresponses() {
+		return this.tblresponses;
+	}
+
+	public void setTblresponses(List<TblResponse> tblresponses) {
+		this.tblresponses = tblresponses;
+	}
+
+	public TblResponse addTblrespons(TblResponse tblrespons) {
+		getTblresponses().add(tblrespons);
+		tblrespons.setTblquery(this);
+
+		return tblrespons;
+	}
+
+	public TblResponse removeTblrespons(TblResponse tblrespons) {
+		getTblresponses().remove(tblrespons);
+		tblrespons.setTblquery(null);
+
+		return tblrespons;
+	}
+
+	public List<TblUserQueryResponse> getTbluserQueryResponses() {
+		return this.tbluserQueryResponses;
+	}
+
+	public void setTbluserQueryResponses(List<TblUserQueryResponse> tbluserQueryResponses) {
+		this.tbluserQueryResponses = tbluserQueryResponses;
+	}
+
+	public TblUserQueryResponse addTbluserQueryRespons(TblUserQueryResponse tbluserQueryRespons) {
+		getTbluserQueryResponses().add(tbluserQueryRespons);
+		tbluserQueryRespons.setTblquery(this);
+
+		return tbluserQueryRespons;
+	}
+
+	public TblUserQueryResponse removeTbluserQueryRespons(TblUserQueryResponse tbluserQueryRespons) {
+		getTbluserQueryResponses().remove(tbluserQueryRespons);
+		tbluserQueryRespons.setTblquery(null);
+
+		return tbluserQueryRespons;
+	}
+
+}

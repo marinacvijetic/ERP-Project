@@ -1,0 +1,168 @@
+package lillyBakery.jpa;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
+
+
+/**
+ * The persistent class for the tblcustomer database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="TblCustomer.findAll", query="SELECT t FROM TblCustomer t")
+public class TblCustomer implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@SequenceGenerator(name="TBLCUSTOMER_CUSTOMERID_GENERATOR", sequenceName="CUSTOMER_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TBLCUSTOMER_CUSTOMERID_GENERATOR")
+	@Column(name="customer_id")
+	private Integer customerId;
+
+	@Column(name="_name")
+	private String name;
+
+	@Column(name="number_of_orders")
+	private Integer numberOfOrders;
+
+	@Column(name="phone_number")
+	private String phoneNumber;
+
+	private String surname;
+
+	//bi-directional many-to-one association to TblUser
+	@ManyToOne
+	@JoinColumn(name="user_email")
+	private TblUser tbluser;
+
+	//bi-directional many-to-one association to TblOrder
+	@OneToMany(mappedBy="tblcustomer")
+	private List<TblOrder> tblorders;
+
+	//bi-directional many-to-one association to TblQuery
+	@OneToMany(mappedBy="tblcustomer")
+	private List<TblQuery> tblqueries;
+
+	//bi-directional many-to-one association to TblUserQueryResponse
+	@OneToMany(mappedBy="tblcustomer")
+	private List<TblUserQueryResponse> tbluserQueryResponses;
+
+	public TblCustomer() {
+	}
+
+	public Integer getCustomerId() {
+		return this.customerId;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getNumberOfOrders() {
+		return this.numberOfOrders;
+	}
+
+	public void setNumberOfOrders(Integer numberOfOrders) {
+		this.numberOfOrders = numberOfOrders;
+	}
+
+	public String getPhoneNumber() {
+		return this.phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getSurname() {
+		return this.surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public TblUser getTbluser() {
+		return this.tbluser;
+	}
+
+	public void setTbluser(TblUser tbluser) {
+		this.tbluser = tbluser;
+	}
+
+	public List<TblOrder> getTblorders() {
+		return this.tblorders;
+	}
+
+	public void setTblorders(List<TblOrder> tblorders) {
+		this.tblorders = tblorders;
+	}
+
+	public TblOrder addTblorder(TblOrder tblorder) {
+		getTblorders().add(tblorder);
+		tblorder.setTblcustomer(this);
+
+		return tblorder;
+	}
+
+	public TblOrder removeTblorder(TblOrder tblorder) {
+		getTblorders().remove(tblorder);
+		tblorder.setTblcustomer(null);
+
+		return tblorder;
+	}
+
+	public List<TblQuery> getTblqueries() {
+		return this.tblqueries;
+	}
+
+	public void setTblqueries(List<TblQuery> tblqueries) {
+		this.tblqueries = tblqueries;
+	}
+
+	public TblQuery addTblquery(TblQuery tblquery) {
+		getTblqueries().add(tblquery);
+		tblquery.setTblcustomer(this);
+
+		return tblquery;
+	}
+
+	public TblQuery removeTblquery(TblQuery tblquery) {
+		getTblqueries().remove(tblquery);
+		tblquery.setTblcustomer(null);
+
+		return tblquery;
+	}
+
+	public List<TblUserQueryResponse> getTbluserQueryResponses() {
+		return this.tbluserQueryResponses;
+	}
+
+	public void setTbluserQueryResponses(List<TblUserQueryResponse> tbluserQueryResponses) {
+		this.tbluserQueryResponses = tbluserQueryResponses;
+	}
+
+	public TblUserQueryResponse addTbluserQueryRespons(TblUserQueryResponse tbluserQueryRespons) {
+		getTbluserQueryResponses().add(tbluserQueryRespons);
+		tbluserQueryRespons.setTblcustomer(this);
+
+		return tbluserQueryRespons;
+	}
+
+	public TblUserQueryResponse removeTbluserQueryRespons(TblUserQueryResponse tbluserQueryRespons) {
+		getTbluserQueryResponses().remove(tbluserQueryRespons);
+		tbluserQueryRespons.setTblcustomer(null);
+
+		return tbluserQueryRespons;
+	}
+
+}

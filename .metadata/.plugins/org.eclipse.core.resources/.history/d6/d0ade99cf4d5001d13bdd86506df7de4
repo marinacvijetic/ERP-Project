@@ -1,0 +1,70 @@
+package lillyBakery.jpa;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+
+/**
+ * The persistent class for the tblorder_item database table.
+ * 
+ */
+@Entity
+@Table(name="tblorder_item")
+@NamedQuery(name="TblOrderItem.findAll", query="SELECT t FROM TblOrderItem t")
+public class TblOrderItem implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@SequenceGenerator(name="TBLORDER_ITEM_ORDERITEMID_GENERATOR", sequenceName="ORDER_ITEM_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TBLORDER_ITEM_ORDERITEMID_GENERATOR")
+	@Column(name="order_item_id")
+	private Integer orderItemId;
+
+	private Integer quantity;
+
+	//bi-directional many-to-one association to TblOrder
+	@ManyToOne
+	@JoinColumn(name="order_id")
+	private TblOrder tblorder;
+
+	//bi-directional many-to-one association to TblProduct
+	@ManyToOne
+	@JoinColumn(name="product_id")
+	private TblProduct tblproduct;
+
+	public TblOrderItem() {
+	}
+
+	public Integer getOrderItemId() {
+		return this.orderItemId;
+	}
+
+	public void setOrderItemId(Integer orderItemId) {
+		this.orderItemId = orderItemId;
+	}
+
+	public Integer getQuantity() {
+		return this.quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public TblOrder getTblorder() {
+		return this.tblorder;
+	}
+
+	public void setTblorder(TblOrder tblorder) {
+		this.tblorder = tblorder;
+	}
+
+	public TblProduct getTblproduct() {
+		return this.tblproduct;
+	}
+
+	public void setTblproduct(TblProduct tblproduct) {
+		this.tblproduct = tblproduct;
+	}
+
+}

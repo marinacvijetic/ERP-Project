@@ -1,0 +1,104 @@
+package lillyBakery.jpa;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
+
+
+/**
+ * The persistent class for the tbluser database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="TblUser.findAll", query="SELECT t FROM TblUser t")
+public class TblUser implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="user_email")
+	private String userEmail;
+
+	private String password;
+
+	private String username;
+
+	//bi-directional many-to-one association to TblAdministrator
+	@OneToMany(mappedBy="tbluser")
+	private List<Tbldministrator> tbladministrators;
+
+	//bi-directional many-to-one association to TblCustomer
+	@OneToMany(mappedBy="tbluser")
+	private List<TblCustomer> tblcustomers;
+
+	public TblUser() {
+	}
+
+	public String getUserEmail() {
+		return this.userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUsername() {
+		return this.username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public List<Tbldministrator> getTbladministrators() {
+		return this.tbladministrators;
+	}
+
+	public void setTbladministrators(List<Tbldministrator> tbladministrators) {
+		this.tbladministrators = tbladministrators;
+	}
+
+	public Tbldministrator addTbladministrator(Tbldministrator tbladministrator) {
+		getTbladministrators().add(tbladministrator);
+		tbladministrator.setTbluser(this);
+
+		return tbladministrator;
+	}
+
+	public Tbldministrator removeTbladministrator(Tbldministrator tbladministrator) {
+		getTbladministrators().remove(tbladministrator);
+		tbladministrator.setTbluser(null);
+
+		return tbladministrator;
+	}
+
+	public List<TblCustomer> getTblcustomers() {
+		return this.tblcustomers;
+	}
+
+	public void setTblcustomers(List<TblCustomer> tblcustomers) {
+		this.tblcustomers = tblcustomers;
+	}
+
+	public TblCustomer addTblcustomer(TblCustomer tblcustomer) {
+		getTblcustomers().add(tblcustomer);
+		tblcustomer.setTbluser(this);
+
+		return tblcustomer;
+	}
+
+	public TblCustomer removeTblcustomer(TblCustomer tblcustomer) {
+		getTblcustomers().remove(tblcustomer);
+		tblcustomer.setTbluser(null);
+
+		return tblcustomer;
+	}
+
+}

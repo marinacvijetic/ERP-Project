@@ -1,0 +1,42 @@
+package lillyBakery.ctrl;
+
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import lillyBakery.jpa.Tbladministrator;
+import lillyBakery.repository.TbladministratorRepository;
+
+@RestController
+public class TbladministratorController {
+	
+	@Autowired
+	private TbladministratorRepository repoAdmin;
+	
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	
+	@GetMapping("/admin")
+	public Collection<Tbladministrator> getAllAdministrator (){
+		
+		return repoAdmin.findAll();
+	}
+	
+	@SuppressWarnings({ "deprecation", "deprecation" })
+	@GetMapping("/admin/{id}")
+	public Tbladministrator getAdministratorById(@PathVariable int id) {
+		
+		return repoAdmin.getOne(id);
+	}
+	
+	@GetMapping("/admin/{adminName}")
+	public Tbladministrator getAdministratorByName(@PathVariable )
+	
+	
+	
+}

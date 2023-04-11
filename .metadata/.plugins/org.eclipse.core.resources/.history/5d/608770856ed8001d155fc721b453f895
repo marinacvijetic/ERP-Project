@@ -1,0 +1,50 @@
+package lillyBakery.ctrl;
+
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import lillyBakery.jpa.Tblcustomer;
+import lillyBakery.repository.TblcustomerRepository;
+
+@RestController
+public class TblcustomerController {
+	
+	@Autowired
+	private TblcustomerRepository repoCustomer;
+	
+	@GetMapping("/customer")
+	public Collection<Tblcustomer> getAllCustomer(){
+		return repoCustomer.findAll();
+	}
+	
+	@SuppressWarnings("deprecation")
+	@GetMapping("/customer/{id}")
+	public Tblcustomer getCustomerById(@PathVariable int id) {
+		
+		return repoCustomer.getById(id);
+	}
+	
+	@PostMapping("/customer")
+	public ResponseEntity<Tblcustomer> createCustomer(@RequestBody Tblcustomer customer){
+		if(customer.getCustomerId() != null && repoCustomer.existsById(customer.getCustomerId()))
+		{
+			return new ResponseEntity<Tblcustomer>(HttpStatus.CONFLICT);
+		}else
+		{
+			Integer customerId = repoCustomer.getNextCustomerId();
+			customer.setCustomerId(customerId);
+			Tblcustomer savedCustomer = repoCustomer.save(customer);
+			
+			return new ResponseEntity<Tblcustomer>(savedCustomer, HttpStatus.OK);
+		}
+	}
+
+}

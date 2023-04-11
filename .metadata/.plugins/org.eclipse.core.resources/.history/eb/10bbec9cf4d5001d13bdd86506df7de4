@@ -1,0 +1,149 @@
+package lillyBakery.jpa;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+
+/**
+ * The persistent class for the tblorder database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="TblOrder.findAll", query="SELECT t FROM TblOrder t")
+public class TblOrder implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@SequenceGenerator(name="TBLORDER_ORDERID_GENERATOR", sequenceName="ORDER_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TBLORDER_ORDERID_GENERATOR")
+	@Column(name="order_id")
+	private Integer orderId;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="order_date")
+	private Date orderDate;
+
+	private BigDecimal total;
+
+	//bi-directional many-to-one association to TblCustomer
+	@ManyToOne
+	@JoinColumn(name="customer_id")
+	private TblCustomer tblcustomer;
+
+	//bi-directional many-to-one association to TblOrderArrivalDetails
+	@ManyToOne
+	@JoinColumn(name="arrival_details_id")
+	private TblOrderArrivalDetails tblorderArrivalDetail;
+
+	//bi-directional many-to-one association to TblOrderStatus
+	@ManyToOne
+	@JoinColumn(name="status_id")
+	private TblOrderStatus tblorderStatus;
+
+	//bi-directional many-to-one association to TblPaymentMethod
+	@ManyToOne
+	@JoinColumn(name="payment_method_id")
+	private TblPaymentMethod tblpaymentMethod;
+
+	//bi-directional many-to-one association to TblShippingMethod
+	@ManyToOne
+	@JoinColumn(name="shipping_id")
+	private TblShippingMethod tblshippingMethod;
+
+	//bi-directional many-to-one association to TblOrderItem
+	@OneToMany(mappedBy="tblorder")
+	private List<TblOrderItem> tblorderItems;
+
+	public TblOrder() {
+	}
+
+	public Integer getOrderId() {
+		return this.orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
+
+	public Date getOrderDate() {
+		return this.orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	public BigDecimal getTotal() {
+		return this.total;
+	}
+
+	public void setTotal(BigDecimal total) {
+		this.total = total;
+	}
+
+	public TblCustomer getTblcustomer() {
+		return this.tblcustomer;
+	}
+
+	public void setTblcustomer(TblCustomer tblcustomer) {
+		this.tblcustomer = tblcustomer;
+	}
+
+	public TblOrderArrivalDetails getTblorderArrivalDetail() {
+		return this.tblorderArrivalDetail;
+	}
+
+	public void setTblorderArrivalDetail(TblOrderArrivalDetails tblorderArrivalDetail) {
+		this.tblorderArrivalDetail = tblorderArrivalDetail;
+	}
+
+	public TblOrderStatus getTblorderStatus() {
+		return this.tblorderStatus;
+	}
+
+	public void setTblorderStatus(TblOrderStatus tblorderStatus) {
+		this.tblorderStatus = tblorderStatus;
+	}
+
+	public TblPaymentMethod getTblpaymentMethod() {
+		return this.tblpaymentMethod;
+	}
+
+	public void setTblpaymentMethod(TblPaymentMethod tblpaymentMethod) {
+		this.tblpaymentMethod = tblpaymentMethod;
+	}
+
+	public TblShippingMethod getTblshippingMethod() {
+		return this.tblshippingMethod;
+	}
+
+	public void setTblshippingMethod(TblShippingMethod tblshippingMethod) {
+		this.tblshippingMethod = tblshippingMethod;
+	}
+
+	public List<TblOrderItem> getTblorderItems() {
+		return this.tblorderItems;
+	}
+
+	public void setTblorderItems(List<TblOrderItem> tblorderItems) {
+		this.tblorderItems = tblorderItems;
+	}
+
+	public TblOrderItem addTblorderItem(TblOrderItem tblorderItem) {
+		getTblorderItems().add(tblorderItem);
+		tblorderItem.setTblorder(this);
+
+		return tblorderItem;
+	}
+
+	public TblOrderItem removeTblorderItem(TblOrderItem tblorderItem) {
+		getTblorderItems().remove(tblorderItem);
+		tblorderItem.setTblorder(null);
+
+		return tblorderItem;
+	}
+
+}
