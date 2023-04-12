@@ -52,7 +52,7 @@ public class TblcategoryController {
 	    
 	}
 	
-	@PutMapping("/category/id/{id}")
+	@PutMapping("/category")
 	public ResponseEntity<Tblcategory> updateCategory(@RequestBody Tblcategory category){
 		if(repoCategory.existsById(category.getCategoryId()))
 		{
@@ -65,11 +65,11 @@ public class TblcategoryController {
 	}
 	
 	@RequestMapping(value = "category/{id}", produces = "application/json", method = RequestMethod.DELETE)
-	public ResponseEntity<Tblcategory> deleteCategory(@PathVariable Integer Id){
+	public ResponseEntity<Tblcategory> deleteCategory(@PathVariable Integer id){
 		
-		if(repoCategory.existsById(Id))
+		if(repoCategory.existsById(id))
 		{
-			repoCategory.deleteById(Id);
+			repoCategory.deleteById(id);
 			return new ResponseEntity<Tblcategory>(HttpStatus.OK);
 		}else
 		{

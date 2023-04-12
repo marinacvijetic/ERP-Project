@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import lillyBakery.jpa.Tblcustomer;
@@ -48,7 +50,7 @@ public class TblcustomerController {
 		}
 	}
 	
-	@PutMapping("/customer/id/{id}")
+	@PutMapping("/customer")
 	public ResponseEntity<Tblcustomer> updateCustomer(@RequestBody Tblcustomer customer){
 		if(repoCustomer.existsById(customer.getCustomerId()))
 		{
@@ -59,5 +61,19 @@ public class TblcustomerController {
 			return new ResponseEntity<Tblcustomer>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@RequestMapping(value = "customer/{id}", produces = "application/json", method = RequestMethod.DELETE)
+	public ResponseEntity<Tblcustomer> deleteCustomer(@PathVariable Integer id){
+		
+		if(repoCustomer.existsById(id))
+		{
+			repoCustomer.deleteById(id);
+			return new ResponseEntity<Tblcustomer>(HttpStatus.OK);
+		}else
+		{
+			return new ResponseEntity<Tblcustomer>(HttpStatus.NOT_FOUND);
+		}
+	}
+
 
 }
