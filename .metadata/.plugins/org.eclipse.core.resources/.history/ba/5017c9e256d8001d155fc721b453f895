@@ -1,5 +1,0 @@
-package lillyBakery.repository;
-
-public interface TblcustomerRepository {
-
-}

@@ -28,7 +28,7 @@ public class TblcustomerController {
 		return repoCustomer.findAll();
 	}
 	
-	@SuppressWarnings("deprecation")
+
 	@GetMapping("/customer/{id}")
 	public Tblcustomer getCustomerById(@PathVariable int id) {
 		

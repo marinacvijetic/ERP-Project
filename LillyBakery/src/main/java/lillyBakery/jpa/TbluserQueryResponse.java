@@ -17,25 +17,17 @@ public class TbluserQueryResponse implements Serializable {
 	@EmbeddedId
 	private TbluserQueryResponsePK id;
 
-	@Column(name="tblcustomer_customer_id", insertable=false, updatable=false)
-	private Integer tblcustomerCustomerId;
-
-	@Column(name="tblquery_query_id", insertable=false, updatable=false)
-	private Integer tblqueryQueryId;
-
-	@Column(name="tblresponse_response_id", insertable=false, updatable=false)
-	private Integer tblresponseResponseId;
-
-	//bi-directional many-to-one association to Tblcustomer
+	// Define the relationships without the additional attributes
 	@ManyToOne
-	private Tblcustomer tblcustomer;
-
-	//bi-directional many-to-one association to Tblquery
-	@ManyToOne
+	@JoinColumn(name="query_id", referencedColumnName="query_id", insertable=false, updatable=false)
 	private Tblquery tblquery;
 
-	//bi-directional many-to-one association to Tblresponse
 	@ManyToOne
+	@JoinColumn(name="customer_id", referencedColumnName="customer_id", insertable=false, updatable=false)
+	private Tblcustomer tblcustomer;
+
+	@ManyToOne
+	@JoinColumn(name="response_id", referencedColumnName="response_id", insertable=false, updatable=false)
 	private Tblresponse tblresponse;
 
 	public TbluserQueryResponse() {
@@ -49,29 +41,6 @@ public class TbluserQueryResponse implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getTblcustomerCustomerId() {
-		return this.tblcustomerCustomerId;
-	}
-
-	public void setTblcustomerCustomerId(Integer tblcustomerCustomerId) {
-		this.tblcustomerCustomerId = tblcustomerCustomerId;
-	}
-
-	public Integer getTblqueryQueryId() {
-		return this.tblqueryQueryId;
-	}
-
-	public void setTblqueryQueryId(Integer tblqueryQueryId) {
-		this.tblqueryQueryId = tblqueryQueryId;
-	}
-
-	public Integer getTblresponseResponseId() {
-		return this.tblresponseResponseId;
-	}
-
-	public void setTblresponseResponseId(Integer tblresponseResponseId) {
-		this.tblresponseResponseId = tblresponseResponseId;
-	}
 
 	public Tblcustomer getTblcustomer() {
 		return this.tblcustomer;

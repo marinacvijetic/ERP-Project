@@ -29,7 +29,7 @@ public class TblorderStatusController {
 		return repoStatus.findAll();
 	}
 	
-	@SuppressWarnings("deprecation")
+
 	@GetMapping("/orderStatus/{id}")
 	public TblorderStatus getOrderStatusById(@PathVariable int id) {
 		

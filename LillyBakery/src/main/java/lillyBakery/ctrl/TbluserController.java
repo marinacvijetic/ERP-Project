@@ -28,7 +28,7 @@ public class TbluserController {
 		return repoUser.findAll();
 	}
 	
-	@SuppressWarnings("deprecation")
+
 	@GetMapping("/user/{email}")
 	public Tbluser getUserById(@PathVariable String email) {
 		

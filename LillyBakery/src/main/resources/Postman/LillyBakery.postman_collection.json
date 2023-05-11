@@ -1,0 +1,1569 @@
+{
+	"info": {
+		"_postman_id": "e7dc4dad-9324-4321-a50a-974fc906995f",
+		"name": "LillyBakery",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GetAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/user/marinacvijetic2@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"user",
+								"marinacvijetic2@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"userEmail\": \"testPostMethod.user@gmail.com\",\r\n        \"password\": \"testPost\",\r\n        \"username\": \"testUserPost\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"userEmail\": \"testPostMethod.user@gmail.com\",\r\n        \"password\": \"testPutMethod\",\r\n        \"username\": \"testUserPutMethod\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/user/testPostMethod.user@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"user",
+								"testPostMethod.user@gmail.com"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Administrator",
+			"item": [
+				{
+					"name": "GetAllAdmin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAdminById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/admin/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"admin",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewAdmin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"adminName\": \"Test Admin\",\r\n        \"tbluser\": {\r\n            \"userEmail\": \"test.user@gmail.com\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateAdministrator",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"adminId\": \"4\",\r\n        \"adminName\": \"Test Admin Update\",\r\n        \"tbluser\": {\r\n            \"userEmail\": \"test.user@gmail.com\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAdmin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/admin/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"admin",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "GetAllCustomer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCustomerById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/customer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"TestPostCustomer\",\r\n    \"numberOfOrders\": 1,\r\n    \"phoneNumber\": \"064-478-55-00\",\r\n    \"surname\": \"TestPostCustomer\",\r\n    \"tbluser\": {\r\n        \"userEmail\": \"testPostMethod.user@gmail.com\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCustomer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"customerId\": 8,\r\n        \"name\": \"TestPutCustomer\",\r\n        \"numberOfOrders\": 1,\r\n        \"phoneNumber\": \"064-478-88-88\",\r\n        \"surname\": \"TestPutCustomer\",\r\n        \"tbluser\": {\r\n            \"userEmail\": \"testPostMethod.user@gmail.com\"\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCustomer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/customer/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"customer",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "GetAllCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCategoryById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/category/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewCategory",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"categoryName\": \"Piće\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCategory",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"categoryId\": 10,\r\n        \"categoryName\": \"Alkoholna pića\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/category/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"category",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderStatus",
+			"item": [
+				{
+					"name": "GetAllOrderStatus",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/orderStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrderStatusById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/orderStatus/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderStatus",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewOrderStatus",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"orderStatus\": \"Canceled\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/orderStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOrderStatus",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"statusId\": 6,\r\n    \"orderStatus\": \"Canceled Test Put\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/orderStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOrderStatus",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/orderStatus/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderStatus",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ShippingMethod",
+			"item": [
+				{
+					"name": "GetAllShippingMethod",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/shipping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"shipping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetShippingMethodById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/shipping/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"shipping",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewShippingMethod",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 550.00,\r\n    \"shippingOption\": \"Delivery\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/shipping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"shipping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateShippingMethod",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"shippingId\": 1,\r\n    \"price\": 350.00,\r\n    \"shippingOption\": \"Delivery\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/shipping",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"shipping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteShippingMethod",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/shipping/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"shipping",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PaymentMethod",
+			"item": [
+				{
+					"name": "GetAllPaymentMethod",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/paymentMethod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"paymentMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPaymentMethodById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/paymentMethod/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"paymentMethod",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewPaymentMethod",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentMethod\": \"Pay With Card\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/paymentMethod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"paymentMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePaymentMethod",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"paymentMethodId\": 6,\r\n    \"paymentMethod\": \"Pay With Cash\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/paymentMethod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"paymentMethod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePaymentMethod",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/paymentMethod/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"paymentMethod",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderItem",
+			"item": [
+				{
+					"name": "GetAllOrderItem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/orderItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrderItemById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/orderItem/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderItem",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewOrderItem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 2,\r\n    \"tblorder\": {\r\n        \"orderId\": 4,\r\n        \"orderDate\": \"2023-07-01\",\r\n        \"total\": null,\r\n        \"tblcustomer\": {\r\n            \"customerId\": 12,\r\n            \"tbluser\": {\r\n                \"userEmail\": \"test.user@gmail.com\"\r\n            }\r\n        },\r\n        \"tblorderArrivalDetail\": {\r\n            \"arrivalDetailsId\": 5,\r\n            \"arrivalDate\": \"2023-07-13\",\r\n            \"arrivalTime\": \"19:00:00\",\r\n            \"city\": \"Sremska Mitrovica\",\r\n            \"country\": \"Srbija\",\r\n            \"postalCode\": \"22000\",\r\n            \"streetName\": \"Trg Cire Milekica\",\r\n            \"streetNumber\": \"12\"\r\n        },\r\n        \"tblorderStatus\": {\r\n            \"statusId\": 1,\r\n            \"orderStatus\": \"Accepted\"\r\n        },\r\n        \"tblpaymentMethod\": {\r\n            \"paymentMethodId\": 2,\r\n            \"paymentMethod\": \"Pay With Cash\"\r\n        },\r\n        \"tblshippingMethod\": {\r\n            \"shippingId\": 1,\r\n            \"price\": 350.00,\r\n            \"shippingOption\": \"Delivery\"\r\n        }\r\n    },\r\n    \"tblproduct\": {\r\n        \"productId\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/orderItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOrderItem",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderItemId\": 13,\r\n    \"quantity\": 2,\r\n    \"tblorder\": {\r\n        \"orderId\": 3,\r\n        \"orderDate\": \"2023-07-01\",\r\n        \"total\": null,\r\n        \"tblcustomer\": {\r\n            \"customerId\": 4,\r\n            \"name\": \"Slavica\",\r\n            \"numberOfOrders\": 1,\r\n            \"phoneNumber\": \"061-555-47-77\",\r\n            \"surname\": \"Gajić\",\r\n            \"tbluser\": {\r\n                \"userEmail\": \"slav.gajic77@gmail.com\",\r\n                \"password\": \"9lk6cSE3\",\r\n                \"username\": \"Slavicaa\"\r\n            }\r\n        },\r\n        \"tblorderArrivalDetail\": {\r\n            \"arrivalDetailsId\": 5,\r\n            \"arrivalDate\": \"2023-07-13\",\r\n            \"arrivalTime\": \"19:00:00\",\r\n            \"city\": \"Sremska Mitrovica\",\r\n            \"country\": \"Srbija\",\r\n            \"postalCode\": \"22000\",\r\n            \"streetName\": \"Trg Cire Milekica\",\r\n            \"streetNumber\": \"12\"\r\n        },\r\n        \"tblorderStatus\": {\r\n            \"statusId\": 1,\r\n            \"orderStatus\": \"Accepted\"\r\n        },\r\n        \"tblpaymentMethod\": {\r\n            \"paymentMethodId\": 2,\r\n            \"paymentMethod\": \"Pay With Cash\"\r\n        },\r\n        \"tblshippingMethod\": {\r\n            \"shippingId\": 1,\r\n            \"price\": 350.00,\r\n            \"shippingOption\": \"Delivery\"\r\n        }\r\n    },\r\n    \"tblproduct\": {\r\n        \"productId\": 1,\r\n        \"description\": \"Rolat od jaja, punjen fetom, šunkom i krastavčićima.\",\r\n        \"pricePerKilogram\": 900,\r\n        \"productImage\": null,\r\n        \"productName\": \"Žuti Rolat\",\r\n        \"tblcategory\": {\r\n            \"categoryId\": 1,\r\n            \"categoryName\": \"Slana Predjela\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/orderItem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOrderItem",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/orderItem/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderItem",
+								"13"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderArrivalDetail",
+			"item": [
+				{
+					"name": "GetAllOrderArrivalDetail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/orderArrival",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderArrival"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrderArrivalDetailById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/orderArrival/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderArrival",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewOrderArrivalDetail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"arrivalDate\": \"2023-07-14\",\r\n    \"arrivalTime\": \"15:30:00\",\r\n    \"city\": \"Sremska Mitrovica\",\r\n    \"country\": \"Srbija\",\r\n    \"postalCode\": \"22000\",\r\n    \"streetName\": \"Josifa Rajacica\",\r\n    \"streetNumber\": \"27\",\r\n    \"hibernateLazyInitializer\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/orderArrival",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderArrival"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOrderArrivalDetail",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"arrivalDetailsId\": 7,\r\n    \"arrivalDate\": \"2023-08-28\",\r\n    \"arrivalTime\": \"00:00:00\",\r\n    \"city\": \"Sremska Mitrovica\",\r\n    \"country\": \"Srbija\",\r\n    \"postalCode\": \"22000\",\r\n    \"streetName\": \"Dekanske baste\",\r\n    \"streetNumber\": \"24\",\r\n    \"hibernateLazyInitializer\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/orderArrival",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderArrival"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOrderArrivalDetail",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/orderArrival/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"orderArrival",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "GetAllProduct",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/product/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Štanglice sa ajvarom\",\r\n    \"pricePerKilogram\": 1000,\r\n    \"productImage\": null,\r\n    \"productName\": \"Štanglice sa ajvarom\",\r\n    \"tblcategory\": {\r\n        \"categoryId\": 1,\r\n        \"categoryName\": \"Slana Predjela\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 8,\r\n    \"description\": \"Štanglice sa ajvarom\",\r\n    \"pricePerKilogram\": 2000,\r\n    \"productImage\": null,\r\n    \"productName\": \"Štanglice sa ajvarom\",\r\n    \"tblcategory\": {\r\n        \"categoryId\": 1,\r\n        \"categoryName\": \"Slana Predjela\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/product",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/product/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Query",
+			"item": [
+				{
+					"name": "GetAllQuery",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetQueryById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/query/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"query",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewQuery",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2023-04-08\",\r\n    \"query\": \"query test 1\",\r\n    \"tblcustomer\": {\r\n        \"customerId\": 3,\r\n        \"name\": \"Sanja\",\r\n        \"numberOfOrders\": 2,\r\n        \"phoneNumber\": \"065-124-99-88\",\r\n        \"surname\": \"Jokić\",\r\n        \"tbluser\": {\r\n            \"userEmail\": \"jokicsanja@yahoo.com\",\r\n            \"password\": \"22uUr997p\",\r\n            \"username\": \"Sanja_Jokic\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateQuery",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"queryId\": 4,\r\n    \"date\": \"2023-04-08\",\r\n    \"query\": \"query test 1 update\",\r\n    \"tblcustomer\": {\r\n        \"customerId\": 3,\r\n        \"name\": \"Sanja\",\r\n        \"numberOfOrders\": 2,\r\n        \"phoneNumber\": \"065-124-99-88\",\r\n        \"surname\": \"Jokić\",\r\n        \"tbluser\": {\r\n            \"userEmail\": \"jokicsanja@yahoo.com\",\r\n            \"password\": \"22uUr997p\",\r\n            \"username\": \"Sanja_Jokic\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/query",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"query"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteQuery",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/query/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"query",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Response",
+			"item": [
+				{
+					"name": "GetAllResponse",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/response",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"response"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetResponseById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/response/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"response",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewResponse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\": \"2023-06-15\",\r\n    \"response\": \"response Post test\",\r\n    \"tblquery\": {\r\n        \"queryId\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/response",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"response"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateResponse",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"responseId\": 4,\r\n    \"date\": \"2023-05-05\",\r\n    \"response\": \"bla bla response test put method\",\r\n    \"tblquery\": {\r\n        \"queryId\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/response",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"response"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteResponse",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/response/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"response",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "GetAllOrder",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrderById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/order/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNewOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderDate\": \"2023-05-11\",\r\n    \"total\": null,\r\n    \"tblcustomer\": {\r\n        \"customerId\": 3\r\n    },\r\n    \"tblorderArrivalDetail\": {\r\n        \"arrivalDetailsId\": 2\r\n    },\r\n    \"tblorderStatus\": {\r\n        \"statusId\": 2\r\n    },\r\n    \"tblpaymentMethod\": {\r\n        \"paymentMethodId\": 1\r\n    },\r\n    \"tblshippingMethod\": {\r\n        \"shippingId\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateOrder",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderId\": 8,\r\n    \"orderDate\": \"2023-05-12\",\r\n    \"total\": null,\r\n    \"tblcustomer\": {\r\n        \"customerId\": 5\r\n    },\r\n    \"tblorderArrivalDetail\": {\r\n        \"arrivalDetailsId\": 4\r\n    },\r\n    \"tblorderStatus\": {\r\n        \"statusId\": 1\r\n    },\r\n    \"tblpaymentMethod\": {\r\n        \"paymentMethodId\": 2\r\n    },\r\n    \"tblshippingMethod\": {\r\n        \"shippingId\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOrder",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/order/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"order",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
