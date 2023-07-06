@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,7 @@ public class TblcategoryController {
 		
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/category")
 	public ResponseEntity<Tblcategory> createCategory(@RequestBody Tblcategory category){
 	    if (category.getCategoryId() != null && repoCategory.existsById(category.getCategoryId())) {
@@ -52,6 +54,7 @@ public class TblcategoryController {
 	    
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/category")
 	public ResponseEntity<Tblcategory> updateCategory(@RequestBody Tblcategory category){
 		if(repoCategory.existsById(category.getCategoryId()))
@@ -64,6 +67,7 @@ public class TblcategoryController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(value = "category/{id}", produces = "application/json", method = RequestMethod.DELETE)
 	public ResponseEntity<Tblcategory> deleteCategory(@PathVariable Integer id){
 		

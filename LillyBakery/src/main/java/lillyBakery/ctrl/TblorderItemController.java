@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,7 @@ public class TblorderItemController {
 		return repoOrderItem.getById(id);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/orderItem")
 	public ResponseEntity<TblorderItem> createOrderItem(@RequestBody TblorderItem orderItem){
 		if(orderItem.getOrderItemId() != null && repoOrderItem.existsById(orderItem.getOrderItemId()))
@@ -48,6 +50,7 @@ public class TblorderItemController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/orderItem")
 	public ResponseEntity<TblorderItem> updateOrderItem(@RequestBody TblorderItem orderItem){
 		if(repoOrderItem.existsById(orderItem.getOrderItemId()))
@@ -60,6 +63,7 @@ public class TblorderItemController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/orderItem/{id}")
 	public ResponseEntity<TblorderItem> deleteOrderItem(@PathVariable int id){
 		if(repoOrderItem.existsById(id))

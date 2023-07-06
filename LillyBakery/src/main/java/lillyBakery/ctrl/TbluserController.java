@@ -12,39 +12,34 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lillyBakery.jpa.Tbluser;
+import lillyBakery.registration.RegistrationRequest;
 import lillyBakery.repository.TbluserRepository;
+import lillyBakery.services.TbluserService;
 
 @RestController
-public class TbluserController {
+public class TbluserController{
 	
 	@Autowired
 	private TbluserRepository repoUser;
 	
+	@Autowired
+	private TbluserService userService;
+
+	
+
 	@GetMapping("/user")
 	public Collection<Tbluser> getAllUser(){
 		return repoUser.findAll();
 	}
-	
 
-	@GetMapping("/user/{email}")
-	public Tbluser getUserById(@PathVariable String email) {
+	@PostMapping("/api/registration")
+	public String register(@RequestBody RegistrationRequest request) {
 		
-		return repoUser.getById(email);
-	}
-	
-	@PostMapping("/user")
-	public ResponseEntity<Tbluser> createUser(@RequestBody Tbluser user){
-		if(user.getUserEmail() != null && repoUser.existsById(user.getUserEmail())) {
-			
-			return new ResponseEntity<Tbluser>(HttpStatus.CONFLICT);
-		}else
-		{
-			Tbluser temp = repoUser.save(user);
-			return new ResponseEntity<Tbluser>(temp, HttpStatus.CREATED);
-		}
+		return userService.register(request);
 	}
 	
 	@PutMapping("/user")
@@ -70,5 +65,19 @@ public class TbluserController {
 			return new ResponseEntity<Tbluser>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+
+    @GetMapping(path = "/api/registration/confirm")
+    public String confirm(@RequestParam("token") String token) {
+        return userService.confirmToken(token);
+    }
+	
+
+
+
+	
+
+	
+	
 
 }

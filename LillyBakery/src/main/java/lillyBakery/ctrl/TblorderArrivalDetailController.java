@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ public class TblorderArrivalDetailController {
 		return repoArrivalDetail.getById(id);
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/orderArrival")
 	public ResponseEntity<TblorderArrivalDetail> createOrderArrivalDetail(@RequestBody TblorderArrivalDetail orderArrival){
 		if(orderArrival.getArrivalDetailsId() != null && repoArrivalDetail.existsById(orderArrival.getArrivalDetailsId()))
@@ -47,7 +49,7 @@ public class TblorderArrivalDetailController {
 		}
 	}
 	
-	
+	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/orderArrival")
 	public ResponseEntity<TblorderArrivalDetail> updateOrderArrivalDetail(@RequestBody TblorderArrivalDetail orderArrivalDetail){
 		if(repoArrivalDetail.existsById(orderArrivalDetail.getArrivalDetailsId())) {

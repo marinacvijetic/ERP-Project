@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ public class TblpaymentMethodController {
 		return repoPayment.getById(id);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/paymentMethod")
 	public ResponseEntity<TblpaymentMethod> createPaymentMethod (@RequestBody TblpaymentMethod payment){
 		if(payment.getPaymentMethodId() != null && repoPayment.existsById(payment.getPaymentMethodId())) {
@@ -47,6 +49,7 @@ public class TblpaymentMethodController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/paymentMethod")
 	public ResponseEntity<TblpaymentMethod> updatePaymentMethod(@RequestBody TblpaymentMethod payment){
 		if(repoPayment.existsById(payment.getPaymentMethodId()))
@@ -59,6 +62,7 @@ public class TblpaymentMethodController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/paymentMethod/{id}")
 	public ResponseEntity<TblpaymentMethod> deletePaymentMethod(@PathVariable int id){
 		if(repoPayment.existsById(id))

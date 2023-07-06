@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +36,7 @@ public class TblshippingMethodController {
 		
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/shipping")
 	public ResponseEntity<TblshippingMethod> createShippingMethod (@RequestBody TblshippingMethod shipping){
 		if(shipping.getShippingId() != null && repoShipping.existsById(shipping.getShippingId())) {
@@ -50,6 +52,7 @@ public class TblshippingMethodController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/shipping")
 	public ResponseEntity<TblshippingMethod> updateShippingMethod(@RequestBody TblshippingMethod shipping){
 		if(repoShipping.existsById(shipping.getShippingId()))
@@ -62,6 +65,7 @@ public class TblshippingMethodController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/shipping/{id}")
 	public ResponseEntity<TblshippingMethod> deleteShippingMethod(@PathVariable Integer id){
 		if(repoShipping.existsById(id))

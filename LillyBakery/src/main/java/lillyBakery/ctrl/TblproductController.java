@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class TblproductController {
 		return repoProduct.getById(id);
 	}
 	
-	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/product")
 	public ResponseEntity<Tblproduct> createProduct(@RequestBody Tblproduct product){
 		if(product.getProductId() != null && repoProduct.existsById(product.getProductId()))
@@ -49,6 +50,7 @@ public class TblproductController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/product")
 	public ResponseEntity<Tblproduct> updateProduct(@RequestBody Tblproduct product){
 		if(repoProduct.existsById(product.getProductId()))
@@ -61,6 +63,7 @@ public class TblproductController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/product/{id}")
 	public ResponseEntity<Tblproduct> deleteProduct(@PathVariable int id)
 	{

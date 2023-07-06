@@ -22,13 +22,14 @@ public class TbladministratorController {
 	@Autowired
 	private TbladministratorRepository repoAdmin;
 
-	
+
 	@GetMapping("/admin")
 	public Collection<Tbladministrator> getAllAdministrator (){
 		
 		return repoAdmin.findAll();
 	}
 	
+
 	@SuppressWarnings({ "deprecation" })
 	@GetMapping("/admin/{id}")
 	public Tbladministrator getAdministratorById(@PathVariable int id) {
@@ -36,12 +37,14 @@ public class TbladministratorController {
 		return repoAdmin.getOne(id);
 	}
 	
+
 	@GetMapping("/admin/name/{adminName}")
 	public Collection<Tbladministrator> getAdministratorByName(@PathVariable String adminName ) {
 		
 		return repoAdmin.findByAdminNameContainingIgnoreCase(adminName);
 	}
 	
+
 	@PostMapping("/admin")
 	public ResponseEntity<Tbladministrator> createAdministrator(@RequestBody Tbladministrator admin) {
 	    if (admin.getAdminId() != null && repoAdmin.existsById(admin.getAdminId())) {
@@ -56,6 +59,7 @@ public class TbladministratorController {
 	    }
 	}
 	
+
 	@PutMapping("/admin")
 	public ResponseEntity<Tbladministrator> updateAdministrator(@RequestBody Tbladministrator admin){
 		if(repoAdmin.existsById(admin.getAdminId()))
@@ -68,6 +72,7 @@ public class TbladministratorController {
 		}
 	}
 	
+
 	@DeleteMapping("/admin/{id}")
 	public ResponseEntity<Tbladministrator> deleteAdministrator(@PathVariable Integer id){
 		

@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ public class TblorderController {
 	@Autowired
 	private TblorderRepository repoOrder;
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/order")
 	public Collection<Tblorder> getAllOrder(){
 		
@@ -33,6 +35,7 @@ public class TblorderController {
 		return repoOrder.getById(id);
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/order")
 	public ResponseEntity<Tblorder> createOrder (@RequestBody Tblorder order){
 		if(order.getOrderId() != null && repoOrder.existsById(order.getOrderId()))
@@ -48,6 +51,7 @@ public class TblorderController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@PutMapping("/order")
 	public ResponseEntity<Tblorder> updateOrder(@RequestBody Tblorder order){
 		if(repoOrder.existsById(order.getOrderId()))
@@ -60,6 +64,7 @@ public class TblorderController {
 		}
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@DeleteMapping("/order/{id}")
 	public ResponseEntity<Tblorder> deleteOrder(@PathVariable int id){
 		if(repoOrder.existsById(id))
